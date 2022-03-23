@@ -8,7 +8,10 @@ function git
         command git status
         return
     case "root"
-        cd (git rev-parse --show-toplevel)
+        set -l root (git rev-parse --show-toplevel 2> /dev/null) 
+        if test -n "$root"
+            cd "$root"
+        end
         return
     case "sroot" "super-root"
         set -l sroot (git rev-parse --show-superproject-working-tree 2> /dev/null) 
