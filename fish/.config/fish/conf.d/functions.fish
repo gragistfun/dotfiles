@@ -10,6 +10,12 @@ function git
     case "root"
         cd (git rev-parse --show-toplevel)
         return
+    case "sroot" "super-root"
+        set -l sroot (git rev-parse --show-superproject-working-tree 2> /dev/null) 
+        if test -n "$sroot"
+            cd "$sroot"
+        end
+        return
     end
 
     command git $argv
