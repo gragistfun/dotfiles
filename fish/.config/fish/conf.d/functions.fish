@@ -26,9 +26,13 @@ end
 
 function scd 
     if test (count $argv) -eq 1
-        cd (fd -t d -H -E .git --search-path $argv[1] | sk)
+        set dir (fd -t d -H -E .git --search-path "$argv[1]" | sk 2> /dev/null)
     else
-        cd (fd -t d -H -E .git --search-path $HOME | sk)
+        set dir (fd -t d -H -E .git | sk 2> /dev/null)
+    end
+
+    if test -n "$dir"
+        cd "$dir"
     end
 end
 
