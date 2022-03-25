@@ -5,6 +5,7 @@
     verbose = true
 
 [alias]
+    git = !git
 	unstage = restore --staged
 	relate-to = log --follow --
 
