@@ -16,6 +16,7 @@
     relativePaths = false
     branch = true
     showStash = true
+    submoduleSummary = true
 
 [color "status"]
     added = green
