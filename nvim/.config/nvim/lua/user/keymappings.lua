@@ -37,3 +37,7 @@ keymap("n", "<leader>fc", ":Telescope git_commits<CR>", { silent = true })
 -- File Explorer
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 
+-- Git
+keymap("n", "<leader>gs", "<cmd>Gitsign stage_buffer<CR><ESC>", { noremap = true, silent = true })
+keymap("v", "<leader>gs", "<cmd>Gitsign stage_hunk<CR><ESC>", { noremap = true, silent = true })
+
