@@ -35,6 +35,21 @@ return require('packer').startup(function(use)
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
 
+  -- Completion
+  use {	  
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      {'hrsh7th/cmp-nvim-lua'},
+      {'lukas-reineke/cmp-rg'},
+    },
+    config = function()
+      require('user.config.cmp')
+    end
+  }
+
   -- File Explorer
   use {	  
     'kyazdani42/nvim-tree.lua',
