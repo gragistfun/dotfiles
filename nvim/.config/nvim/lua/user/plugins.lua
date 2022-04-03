@@ -44,6 +44,9 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Git
+  use 'tpope/vim-fugitive'
+
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
