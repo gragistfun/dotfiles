@@ -83,6 +83,12 @@ return require('packer').startup(function(use)
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-surround'
   use "lukas-reineke/indent-blankline.nvim"
+  use {
+    'vimoxide/vim-quickscope',
+    config = function()
+      vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
+    end
+  }
 
 end)
 
