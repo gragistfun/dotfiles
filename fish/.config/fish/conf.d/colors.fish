@@ -10,6 +10,18 @@ set -l purple bd93f9
 set -l cyan 8be9fd
 set -l pink ff79c6
 
+# Expose colorscheme
+set -g colorscheme_foreground $foreground
+set -g colorscheme_selection $selection
+set -g colorscheme_comment $comment
+set -g colorscheme_red $red
+set -g colorscheme_orange $orange
+set -g colorscheme_yellow $yellow
+set -g colorscheme_green $green
+set -g colorscheme_purple $purple
+set -g colorscheme_cyan $cyan
+set -g colorscheme_pink $ping
+
 # Syntax Highlighting Colors
 set -g fish_color_normal $foreground
 set -g fish_color_command $cyan
