@@ -11,10 +11,10 @@ cmp.setup {
     ['<CR>']      = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
   },
   sources = {
-    { name = 'nvim_lua'   },
-    { name = 'path'       },
-    { name = 'buffer'     },
-    { name = 'rg'     },
+    { name = 'nvim_lua', keyword_length = 4 },
+    { name = 'path', keyword_length = 4 },
+    { name = 'buffer', keyword_length = 4 },
+    { name = 'rg', keyword_length = 4 },
   },
 }
 
