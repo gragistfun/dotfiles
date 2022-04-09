@@ -42,3 +42,8 @@ keymap("n", "<leader>gg", "<cmd>Git | only<CR>", { noremap = true, silent = true
 keymap("n", "<leader>gs", "<cmd>Gitsign stage_buffer<CR><ESC>", { noremap = true, silent = true })
 keymap("v", "<leader>gs", "<cmd>Gitsign stage_hunk<CR><ESC>", { noremap = true, silent = true })
 
+-- Disable
+keymap("n", "Q", "<nop>", { noremap = true, silent = true }) -- Ex mode
+keymap("n", "gQ", "<nop>", { noremap = true, silent = true })
+keymap("n", "<f1>", "<nop>", { noremap = true, silent = true }) -- Help
+
