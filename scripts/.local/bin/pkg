@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -e
+
+parse_subcommands() {
+    subcommand=""
+    case "$1" in
+        search) subcommand="search" ;;
+        install) subcommand="install" ;;
+        upgrade) subcommand="upgrade" ;;
+        *)
+            echo "ERROR! : Unknown subcommand '$1'"
+            exit 1 ;;
+    esac
+}
+
+set_package_manager() {
+    source /etc/os-release
+
+    case "$ID" in 
+        arch)
+            package_manager() {
+                case "$subcommand" in
+                    search)       pacman -Sys "${@:2}" ;;
+                    install) sudo pacman -Sy "${@:2}"  ;;
+                    upgrade) sudo pacman -Syu          ;;
+                esac
+            } ;;
+        fedora)
+            package_manager() {
+                case "$subcommand" in
+                    search)       dnf search "${@:2}"  ;;
+                    install) sudo dnf install "${@:2}" ;;
+                    upgrade) sudo dnf upgrade          ;;
+                esac
+            } ;;
+        opensuse-tumbelweed)
+            package_manager() {
+                case "$subcommand" in
+                    search)       zypper search "${@:2}"  ;;
+                    install) sudo zypper install "${@:2}" ;;
+                    upgrade) sudo zypper update           ;;
+                esac
+            } ;;
+        ubuntu)
+            package_manager() {
+                case "$subcommand" in
+                    search)       apt search "${@:2}"            ;;
+                    install) sudo apt install "${@:2}"           ;;
+                    upgrade) sudo apt update && sudo apt upgrade ;;
+                esac
+            } ;;
+    esac
+}
+
+set_package_manager
+parse_subcommands "$@"
+
+package_manager "$@"
+
