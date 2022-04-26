@@ -4,8 +4,8 @@ set -e
 parse_subcommands() {
     subcommand=""
     case "$1" in
-        search) subcommand="search" ;;
         install) subcommand="install" ;;
+        search)  subcommand="search"   ;;
         upgrade) subcommand="upgrade" ;;
         *)
             echo "ERROR! : Unknown subcommand '$1'"
@@ -20,32 +20,32 @@ set_package_manager() {
         arch)
             package_manager() {
                 case "$subcommand" in
-                    search)       pacman -Sys "${@:2}" ;;
                     install) sudo pacman -Sy "${@:2}"  ;;
+                    search)       pacman -Sys "${@:2}" ;;
                     upgrade) sudo pacman -Syu          ;;
                 esac
             } ;;
         fedora)
             package_manager() {
                 case "$subcommand" in
-                    search)       dnf search "${@:2}"  ;;
                     install) sudo dnf install "${@:2}" ;;
+                    search)       dnf search "${@:2}"  ;;
                     upgrade) sudo dnf upgrade          ;;
                 esac
             } ;;
         opensuse-tumbelweed)
             package_manager() {
                 case "$subcommand" in
-                    search)       zypper search "${@:2}"  ;;
                     install) sudo zypper install "${@:2}" ;;
+                    search)       zypper search "${@:2}"  ;;
                     upgrade) sudo zypper update           ;;
                 esac
             } ;;
         ubuntu)
             package_manager() {
                 case "$subcommand" in
-                    search)       apt search "${@:2}"            ;;
                     install) sudo apt install "${@:2}"           ;;
+                    search)       apt search "${@:2}"            ;;
                     upgrade) sudo apt update && sudo apt upgrade ;;
                 esac
             } ;;
