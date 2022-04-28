@@ -30,7 +30,11 @@ function fish_prompt --description 'Write out the prompt'
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
     echo -s (set_color $colorscheme_selection)⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤ $normal
-    echo -n -s (set_color $colorscheme_comment) [(date '+%H:%M')] $normal " " (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " " $prompt_status $suffix
+    echo -n -s (set_color $colorscheme_comment) [(date '+%H:%M')] $normal " " \
+               (set_color $color_cwd) (prompt_pwd --full-length-dirs 3) $normal \
+               (fish_vcs_prompt) $normal " " \
+               $prompt_status \
+               $suffix
 end
 
 setenv EDITOR nvim
